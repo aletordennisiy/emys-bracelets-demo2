@@ -12,72 +12,90 @@ import {
   Shield,
   Sparkles,
   Stars,
-  Trees
+  Trees,
+  WandSparkles,
 } from "lucide-react";
 
 const heroRack = "data:image/webp;base64,UklGRvSCAQBXRUJQVlA4IOiCAQBQ9QadASqEAyoDPp1Am0ilo6MmLBKt+MATiU3JIP3wOa3EYOCNnsM/N8IfJbJUbozdP1i9C0evI/iPql91j/P38e4f+rz3/Xe9j/5PXf/PvUq6Gvnn8zL1X/0T0Mv+X17XpU+bH62H714WL/w/Pf8l/l/+v4W+g/kh6Q+Xv2T/T8z/6L+1sn7Nb6bain5//fPRWjBuI/ivKD/b9D/EM4qagj5Mf/V///Sr+kepD0/z+ZPtzJ0S4f53wdW/+1lAQakOXa7x5sA6XWWXa+snJTQlq/psvYZ8JwOhVDcaE5iYz/8lUs9HK80UrhTlGRiBmLDKdPp3YEdkLNmmLVxlTQ1ew9eVJrtaX+wV9LuSP58hWER01TF8yPVfq9QIeA5ptg3lb9/vzTiXOxg5ufrzIkGI24fzBGYImFDC93IPcnlj2hGOZ3ycGuN0R5mPdI+UdmWIb+AeUXD/heRVAcSReuygHU/fz2hDPt9RaYWtgAP8QWTJ56hhhoIeBwcSyODYiuJp/hWacZ+lXqV8XuGf53RqoViX3fNVSpbHZh51+Lt/5/eHge+pc1nxUm5x2HhMzlwIrkg2NRo6GwNnGAXYWCscLPXiFtQs/4fvM4TTt0W4nlfKhFEoAywoG331ShD1l9UrBbNot0xG6me8MnHM/tD93OJOpsetMBPmaERhZNOmSJGP69t7mp+e3R3mcd22q+/NgZtW2xMV0r7150AUdNjF70rNt0xomRmCzqDGfxGgcnyw8yLAI0MoC5X3t7mWqi0SRwnDTqHq8/RspzkoOCmrP5gVGs1n63AMGjzf44T12Dm+mjOOe4SdvWR7dnLcw4Cp9s+WnX9z3Sm8Xm01+F9ho5XAxRT2A/FiiYV/cf8GnK5aLn2EdtpIRbjZ9y91T3JGtYopkNIbfWZpQKXCUR4yAXf3RJXhgyS5/3mkB0Ds1BC7A+g7kpIjVjL3fM0w9vSojyc1ZL+7O0eGy7DwqGxph3glxkn4D8MPfZ37+rP3yZNrc7zOAdbBRXnBZxPrM4AO8lT1jlbRN7A76KH3q9ny3zM0HySLmf7Wn12VwE427mfbS6m+EljlwmPjXV+iuETXyxB1NYnM9mJq6VGifIYWIUhUve9w7nJfuZqwcxv2C1rQ8RQfMPRWu93Zs7KPKds+66ZwSEnl7bl1O4R/oadWQxjS+MMx78vYREYQ3iQdi2g2YzZ0hB0uhAiOQpK5/8M2aUuWIOlJV0gPTktCW7jVaD0M5C8YaHpb59Bx34Tyo8RxQgk1aRj8Tiynm3l7KIm0Rfrv9bWmIjE9NWSFagF8wPEl+4N0aTqL2y1Z4LUw+lGtVmXfQ5vvUrdmFBYkKh4u1pFoqWEWVg0xOL+Spq3LFrtQoOqGQqbGSz7pZMRkI5tP+M7uN6A2TYumxrf04k+V6ei6rO3p6nBT0N3FJ9If3N38ZP3q75Dth0J1YxSx/kigajT6k30I8QWl4K9MNuH05NwCvz5+7kW+gF0lclvKtiYSkItF0m9AikPHU0kJMWc+Yd2A6oymPzncW3Cj7YlJLiAB9P5VA9Jm0Ke7S30Omco4FUt8C9I1E7vh3RF8CK+iQ7q7SUpEUwOWmBWnJbM4H18jD5wJWt5u0GRIok3j7rth2S79aMrh8d+0WiNyR0OKmHnZQ9a8U1I5VNmcc5vD37ywGiMj4Bzqeo/CC6vMIW4ehAlSf/3XjC0SGxYHoWnW8mvxZW8ynvZ0HDpzNGyLeTSFTue99i/WvPN1wS8J8/g2xFdGu6fN8i/7JxthHyJ/UkVv6zNpdBfj0ZfT4rBUBwb+byCw4zcxvfpV9jBAgAA";
 const coralHero = "data:image/webp;base64,UklGRqagAABXRUJQVlA4IJqgAACwKgGdASqEA4QDPm02mUskJCMhLQBOiSgB8A0AJaQAA3AA/vu1LF5hCHpKk2tdBPtk7FbQ4/fYG2a5NPiSL7fN9jS5F/2jEN0/MPk1LRe+oCulFDENxSH2U5FD6JdL3NKh3z40B0n7QZQrNmnB3PX+gY6jLEz4+4f+Y4g6nfwc5ezwXQgxKAHj5Q+G8uQ9kc/NGLy3b6gr5WrY7AHd69O0Nh5GtE6Fs7nQzO/0ph7qxX4GyQ5yUwWn7IQd9Hj5H89DVwA7qz5x5P2W1xF4jA2yjR0qRqqejQZXmMtaEZqUioeZ3sTGtD8m7MWUlaBFrSr/XAQYmuPwjglwmf6+6gYDL3aQYBQ8lhfowbDSm8ZQVkxYW6V4J+LIEY3JHQnBcsYwNLJ0dxqNv0viN4iYZSOeaoPtqQpgt1gRrE/lX4Qf+e8kVVmNUH6VY6XANR4DlycPHh8nz1cX0B+8upCaW6mQpWwz5h8S1or77e5K/GvjlqnG3tbkP6V1v7g4Wkn0+glPhZ0aJ0tVIBLPQf4dfO+lDk0HefzbDIOJ8loqKn6Hdhzfa3BNG9m0c6ym1cR6uvkbIcjMdou3OsM4Rr6JSYkNZNoV5gDCEf9wAylcIURdUPNQHjvVtAzc/4kq4pIhB1wDUbe3A7QSYbA+dcvR7+T9Q2gJkbaShwQJdGwFYs8i/JKlT0l0SgD7a8ryqI0i35VwP1if7wS3vhQxwY6dHb6FQqsC1BBXj/G6z0TXYpYg4LBTnJrnpD0DPMTnMknB8m4iL0bkr2WNvQy5g8slE44iVuzpxJ3ml8jI6C4QfHzN8w6So2K5vRSt3ekNzjEl5sHz3SzsA1B8j0Kz9shO0+2K7o1L9TeJ8/PN8Bcw3hQbP2Zk5f7gbqpbLK0AA";
 const warriorDetail = "data:image/webp;base64,UklGRg4RAABXRUJQVlA4IAIRAAAwRwCdASqEA4MDPm02mUskJCMhK6YhoAgAJaQAATa6B44AAP7+/fP+0/wj+P8x+X9f7f2jdrPFf87fR8wPV7u6gkGpv6i++f9/5f+jX29V7/WQf8H7f/P4k/U/1H9l/X/3N+mP+7/2L8t/5f9L+L/0v5b/p/3v8U/J/0f+f/0v6v9P/sf1v9r/mv1P2T2yJbP+03P6Uce94i2zvZP3h8L2bWn4cOjc7nB3Zsn2CP+10I9Z1kC1uLecwJd8Q7gj7n2gSz4S06kJ0mHcFJ0s+1nxZm3mG90r+6JmLKtL9Oe5TvhmydU0J4H8Hm4PFBVtpZVn8E4xVqk5e9dZOU7vGcN8F1uBbjN2U5WwzJk3cd3Tn7gWqk7N6JpXSIe8GjxvZkA6rDJgPpG6T4l3qra2p5lxYQO7N8DgJe7HPmMPqqEkdwV7dyk+3qptlYXQ4nEFwK9XrSd8r6k5IGVC6Tf2xj12FqgN3JbWXylfpuN3j1k+pr6t5vlC3Uqv9qQ+2r7uWQ70Vw4b25jv2Q0QSM3FV8qXVW8qk0oLZ3eUyQ1WiyEcyO4C1h6D3+CeTr8W1VJd4HAg3WX1fzJm3z2t+6W18Ft+z1u7q4ZV+k23qW25Rxk90dP4g2M9eT2gwAq6xR2X9c2f1bK+JbZ6xKq8gcfv6mV7rE6gVgflO7jI0n5VnZk2b8v5uH2V+0n1V9lP/5L+r/8v+v/pv9D+V/6f83/3v8L/l/6v+9/8f+2/6f+o/2P+3/4v+7/9X9L/3P9v/4P2P5v9f/7f+v/if9n+z/0v7T9j+L/Zv5T+j/6r+8/4f+z/4f+N/5f/Jf0v+v8n/K/6P/X/0P8Ff6v8X/K/1f8L+g/9X/ef7f/jf+7/1v+z/3v9d/9n+9v5b/4v+N/6f/Vf8r+R/2v9v/L/5n+H/2/1v+T/4v+X/2v8T/1v9j/1f+f/8f+R/3v9T/5f+3/0P9P/qv7j/gAA";
 const socialHands = "data:image/webp;base64,UklGRm6GAABXRUJQVlA4IFKGAADQMACdASqjA4QDPm02mUskJCMhLQBOiSgB8A0AJaQAA3AA/vu4X7g9I1q2x9EF0Qz1j7tzCWhY8+ndqzvF1s6KQz86Gm/K0V0Ckgxj4mF3vXYJ4qpdzQe0Wz6lYyQeAgVZ+8Vw5S0sS4zRxfvxVnI3Qe64dNt0xBrmcqA+NVgbF1KQ1xqF6a8lTXgRlwq0l+9tQ9k25qk7b4KBA8WZz8W6dG5oef4I0lQZPqVZkTy6V6w9eT2Dd6gkQ/1qfD9uX7D7beH0GxW2B3FCv4wxWjxz6Qt+5Ajv9esS4AKwBCxAr+Q8uYfJkQpT7m46G7gfrL0yU7bLZbFK9p0T7xU+19px1m7xYjB7T0C4mQIK1j4KxehEpoL3jkG03TAVb0Ab8hBQUK0yA0y7p3WkN9sWc1uIpxO2w7O/JrMcnNCWmU2m+PUpJ7Y1qfB7s6eV5J3p7v4S9ahx5q1kwRj4mSByw0JwEw9m5i0Se9vT2H6JWB6igzBfywq+4o8u7nJYoV2h8tMrW4l2tGJ0tWd2zgzv3v7bWgAE8C7eC0jShS4V+VwqC1xG7OQK+3cSb1oj0G0N5pWm5C4u2xTrwB6qK12i8gE8c9gZz6m3jz6SxVq2y8rLJ2n3g2wY4+F5dcbmVt6rA7n1v8+5oJmZ6dy+2f7o2z7k7r1vQ3ps5O56H/1Vf+n/J/8z+1/5f+5f9j/0P8T/k/5P/X/3v8r/R/2P9P+f/8P+N/0f+q/tP/if9b/pf7b/0v+W/7f/3P8L/1f8T/l/2v8r/l/5v/5f/X/6n/4f5H/gAA";
+const galleryCoral = coralHero;
+const galleryWarrior = warriorDetail;
+const galleryRack = heroRack;
 const logoSeal = "data:image/webp;base64,UklGRtZHAABXRUJQVlA4IMpHAADQJgCdASqQApIDPm02mUskJCMgK7QhoAgAJaQAATa6B44AAP7+/f/+1+1z8lH3xbn7S5tM+H4uB7xQ9cqkI+F4z3tLkH5aE0Z8t3bXvFn2X3c0v7hb1/ylVd4dz6m8fVj7rE5g58n+e5cR2+ahf2CjT0Jk7L0RX4coJm5pUE0g8mThnLJ7kzAhSppBq4r7UvZb0iJb1c6Q2T9tQ8DJjv2N8VVz6XJx2X0UqS7qKDRD0ca6h3nq7X7Ewq1qqM5lWdD0T9GJIfmT0Biy2aOKqkYz4sEm2d6d3c51sV9Qqj4bK8eJrQ2hJxgPp2iAPFtyx9fH4H5C2h9E8G0sw7hLzK7c6rUwIadn82+Pip2wmzW4u4CtUZ+uYAE9tkQyGadGQdZotd9SWQ7GbmzSxGf4zQ5vV6z+V9q3oq5P0h1ZmE5rWDQbU0jR1kJbx3nH3tZitC4VqF6eXwPX2S+zC0T2Yj3zD5Krb+2pmP+JpM8VnZn2m5m3+g/6z+aHq8sz5pT5Q9M5KcLtw8K3bR1yQ3Ksl0M9Dq2KxL3tqj7+v5r6gAA";
 
 const styles = `
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#09100c; color:#fff; }
+  body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:#07100b; color:#fff; }
   a { color: inherit; text-decoration: none; }
-  .page { min-height: 100vh; overflow-x: hidden; background:#09100c; color:#fff; }
-  .overlay-bg { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at top, rgba(78,126,97,.16), transparent 28%), radial-gradient(circle at bottom right, rgba(173,113,62,.12), transparent 24%); }
+  .page { min-height: 100vh; overflow-x: hidden; background:
+    radial-gradient(circle at top, rgba(64,106,78,.18), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(179,122,70,.14), transparent 20%),
+    linear-gradient(180deg, #09110c 0%, #07100b 100%); color:#fff; }
+  .overlay-bg { position: fixed; inset: 0; pointer-events: none; background:
+    radial-gradient(circle at top, rgba(78,126,97,.16), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(173,113,62,.12), transparent 24%),
+    linear-gradient(90deg, transparent 0%, rgba(255,255,255,.015) 50%, transparent 100%);
+    opacity:.95;
+  }
   .container { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
   .hero { position: relative; min-height: 100vh; border-bottom: 1px solid rgba(255,255,255,.08); overflow: hidden; }
   .hero-bg, .hero-bg img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-  .hero-bg img { opacity:.30; }
-  .hero-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(5,8,6,.15), rgba(5,8,6,.58), rgba(5,8,6,.94)); }
+  .hero-bg img { opacity:.26; transform:scale(1.03); filter:saturate(.95) contrast(1.03); }
+  .hero-shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(5,8,6,.14), rgba(5,8,6,.56), rgba(5,8,6,.96)); }
   .hero-radial { position:absolute; inset:0; background:radial-gradient(circle at top, rgba(255,241,218,.12), transparent 24%); }
   .hero-inner { position:relative; min-height:100vh; display:flex; flex-direction:column; padding:32px 0 48px; }
-  .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 20px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.20); backdrop-filter: blur(16px); border-radius:999px; margin-bottom:40px; }
+  .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:12px 20px; border:1px solid rgba(255,255,255,.10); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); backdrop-filter: blur(18px); box-shadow:0 10px 30px rgba(0,0,0,.18); border-radius:999px; margin-bottom:40px; }
   .brand { display:flex; align-items:center; gap:12px; }
   .brand img { width:44px; height:44px; border-radius:999px; object-fit:cover; border:1px solid rgba(255,255,255,.10); }
   .brand-title { font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; color:#f4e7d2; }
   .brand-sub { font-size:.72rem; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,255,255,.45); margin-top:2px; }
   .hero-grid { display:grid; grid-template-columns: 1.08fr .92fr; gap:40px; align-items:center; flex:1; }
-  .badge { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:10px 16px; border:1px solid rgba(226,204,170,.20); background:rgba(226,204,170,.10); color:#f0debf; font-size:.88rem; }
-  .headline { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 8vw, 5.75rem); line-height:.95; color:#f5eada; margin:24px 0 0; }
-  .lead { margin-top:24px; max-width:760px; color:rgba(255,255,255,.74); font-size:1.1rem; line-height:1.9; }
+  .badge { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:10px 16px; border:1px solid rgba(226,204,170,.20); background:linear-gradient(180deg, rgba(226,204,170,.16), rgba(226,204,170,.08)); color:#f0debf; font-size:.88rem; box-shadow:0 10px 24px rgba(0,0,0,.12); }
+  .headline { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 8vw, 6.15rem); line-height:.93; letter-spacing:-.03em; color:#f5eada; margin:24px 0 0; max-width: 10.5ch; }
+  .lead { margin-top:24px; max-width:760px; color:rgba(255,255,255,.76); font-size:1.1rem; line-height:1.95; }
   .hero-actions { display:flex; flex-wrap:wrap; gap:16px; margin-top:32px; }
-  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; border:none; cursor:pointer; border-radius:999px; padding:14px 22px; font-weight:600; transition:.2s ease; }
-  .btn-primary { background:#e2ccaa; color:#26180e; }
-  .btn-primary:hover { background:#f1dfc0; }
-  .btn-dark { background:rgba(255,255,255,.10); color:#fff; backdrop-filter:blur(12px); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; border:none; cursor:pointer; border-radius:999px; padding:14px 22px; font-weight:600; transition:.22s ease; }
+  .btn:hover { transform:translateY(-1px); }
+  .btn-primary { background:linear-gradient(180deg, #f0ddbd 0%, #dbc195 100%); color:#26180e; box-shadow:0 16px 30px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.55); }
+  .btn-primary:hover { background:linear-gradient(180deg, #f4e4c7 0%, #e2c89c 100%); }
+  .btn-dark { background:rgba(255,255,255,.10); color:#fff; backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.08); }
   .btn-dark:hover { background:rgba(255,255,255,.15); }
   .btn-ghost { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.10); }
   .btn-ghost:hover { background:rgba(255,255,255,.10); }
-  .pill { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.20); padding:14px 20px; border-radius:999px; color:rgba(255,255,255,.70); }
-  .card { border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.05); backdrop-filter: blur(18px); border-radius:30px; overflow:hidden; }
-  .hero-card { border-radius:36px; background:rgba(0,0,0,.25); box-shadow:0 30px 80px rgba(0,0,0,.35); }
+  .pill { display:inline-flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.10); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); padding:14px 20px; border-radius:999px; color:rgba(255,255,255,.72); box-shadow:0 10px 24px rgba(0,0,0,.12); }
+  .card { border:1px solid rgba(255,255,255,.10); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); backdrop-filter: blur(18px); border-radius:30px; overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.18); }
+  .hero-card { border-radius:36px; background:rgba(0,0,0,.22); box-shadow:0 34px 90px rgba(0,0,0,.38); }
   .hero-card-pad { padding:20px; }
   .editorial { position:relative; min-height:560px; border-radius:30px; overflow:hidden; border:1px solid rgba(255,255,255,.10); }
   .editorial img { width:100%; height:560px; object-fit:cover; display:block; }
   .editorial-overlay { position:absolute; inset:0; opacity:.65; }
   .editorial-radial { position:absolute; inset:0; background:radial-gradient(circle at top, rgba(255,255,255,.18), transparent 26%); }
-  .editorial-copy { position:absolute; left:24px; right:24px; bottom:24px; padding:24px; border-radius:28px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.35); backdrop-filter:blur(18px); }
+  .editorial-copy { position:absolute; left:24px; right:24px; bottom:24px; padding:24px; border-radius:28px; border:1px solid rgba(255,255,255,.10); background:linear-gradient(180deg, rgba(0,0,0,.32), rgba(0,0,0,.46)); backdrop-filter:blur(20px); }
   .eyebrow { text-transform:uppercase; letter-spacing:.35em; font-size:.72rem; color:rgba(255,255,255,.50); }
-  .editorial-title { font-family: Georgia, "Times New Roman", serif; font-size:2.3rem; color:#f4e8d4; margin-top:12px; }
+  .editorial-title { font-family: Georgia, "Times New Roman", serif; font-size:2.5rem; color:#f4e8d4; margin-top:12px; }
   .editorial-text { margin-top:8px; color:rgba(255,255,255,.76); }
   .tags { margin-top:16px; display:flex; flex-wrap:wrap; gap:8px; }
   .tag { display:inline-flex; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.10); color:rgba(255,255,255,.85); font-size:.86rem; }
-  section.block { padding:80px 0; }
+  .luxury-strip { display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-top:28px; }
+  .luxury-stat { padding:18px 18px 16px; border-radius:22px; border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); }
+  .luxury-stat-kicker { font-size:.68rem; text-transform:uppercase; letter-spacing:.28em; color:rgba(255,255,255,.42); }
+  .luxury-stat-title { margin-top:8px; font-family: Georgia, "Times New Roman", serif; font-size:1.3rem; color:#f3e4ca; }
+  .luxury-stat-copy { margin-top:8px; font-size:.92rem; line-height:1.7; color:rgba(255,255,255,.62); }
+  section.block { padding:96px 0; }
   .section-head { display:flex; justify-content:space-between; align-items:end; gap:24px; margin-bottom:40px; }
-  .section-title { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.3rem, 4vw, 3.3rem); color:#f5eada; margin-top:12px; }
-  .section-copy { margin-top:12px; max-width:760px; color:rgba(255,255,255,.68); line-height:1.8; }
+  .section-title { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.5rem, 4vw, 3.5rem); color:#f5eada; margin-top:12px; letter-spacing:-.02em; }
+  .section-copy { margin-top:12px; max-width:760px; color:rgba(255,255,255,.68); line-height:1.9; }
   .muted-pill { border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.05); padding:10px 16px; border-radius:999px; color:rgba(255,255,255,.58); }
   .grid-4 { display:grid; grid-template-columns: repeat(4, 1fr); gap:20px; }
-  .identity-card { border-radius:30px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.05); cursor:pointer; text-align:left; transition:.2s ease; }
-  .identity-card.active { border-color:rgba(227,205,172,.35); background:rgba(255,255,255,.10); }
-  .identity-card:hover { background:rgba(255,255,255,.10); }
+  .identity-card { border-radius:30px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); cursor:pointer; text-align:left; transition:.24s ease; box-shadow:0 18px 38px rgba(0,0,0,.10); }
+  .identity-card.active { border-color:rgba(227,205,172,.35); background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04)); transform:translateY(-2px); }
+  .identity-card:hover { background:rgba(255,255,255,.10); transform:translateY(-4px); box-shadow:0 26px 50px rgba(0,0,0,.16); }
   .identity-image-wrap { position:relative; height:288px; overflow:hidden; }
-  .identity-image-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease; }
-  .identity-card:hover img { transform:scale(1.05); }
+  .identity-image-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .55s ease; }
+  .identity-card:hover img { transform:scale(1.06); }
   .identity-image-overlay { position:absolute; inset:0; opacity:.60; }
   .identity-body { padding:20px; }
   .identity-top { display:flex; justify-content:space-between; gap:12px; }
@@ -86,7 +104,7 @@ const styles = `
   .identity-desc { margin-top:16px; color:rgba(255,255,255,.68); line-height:1.8; font-size:.95rem; }
   .identity-line { margin-top:12px; color:#ebdcbe; font-size:.95rem; }
   .grid-split { display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; }
-  .ar-wrap { position:relative; border-radius:34px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background:#0c120e; min-height:640px; }
+  .ar-wrap { position:relative; border-radius:34px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background:#0c120e; min-height:640px; box-shadow:0 30px 70px rgba(0,0,0,.22); }
   .ar-wrap::before { content:""; position:absolute; inset:0; background: radial-gradient(circle at top, rgba(62,110,84,.2), transparent 35%), radial-gradient(circle at bottom right, rgba(179,122,70,.18), transparent 30%); }
   .ar-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.80; }
   .ar-dark { position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.45), rgba(0,0,0,.70)); }
@@ -100,16 +118,16 @@ const styles = `
   .ar-bottom-row { display:flex; justify-content:space-between; align-items:center; gap:16px; }
   .stack { display:grid; gap:24px; }
   .pad-24 { padding:24px; }
-  .card-title { font-family: Georgia, "Times New Roman", serif; font-size:2rem; color:#f5eada; margin-top:10px; }
+  .card-title { font-family: Georgia, "Times New Roman", serif; font-size:2rem; color:#f5eada; margin-top:10px; letter-spacing:-.02em; }
   .small { font-size:.95rem; line-height:1.8; color:rgba(255,255,255,.68); }
   .progress-track { height:8px; width:100%; background:rgba(255,255,255,.10); border-radius:999px; overflow:hidden; margin-top:16px; }
   .progress-fill { height:100%; background:linear-gradient(90deg, rgba(227,205,172,.9), rgba(255,255,255,.65)); border-radius:999px; }
   .triple { display:flex; justify-content:space-between; margin-top:12px; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.45); }
   .grid-2 { display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; }
   .select-card { border-radius:22px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.20); padding:16px; text-align:left; cursor:pointer; transition:.2s ease; }
-  .select-card:hover { background:rgba(255,255,255,.05); }
+  .select-card:hover { background:rgba(255,255,255,.05); transform:translateY(-2px); }
   .select-card.active { border-color:rgba(227,205,172,.30); background:rgba(227,205,172,.10); }
-  .icon-box { width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:16px; background:linear-gradient(135deg, #f4e6ca, #be9552); color:#2b190c; margin-bottom:12px; }
+  .icon-box { width:44px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:16px; background:linear-gradient(135deg, #f4e6ca, #be9552); color:#2b190c; margin-bottom:12px; box-shadow:0 10px 24px rgba(0,0,0,.14); }
   .label { font-weight:600; color:#fff; }
   .label-sub { margin-top:4px; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:rgba(255,255,255,.45); }
   .social-grid { display:grid; grid-template-columns: .95fr 1.05fr; gap:24px; }
@@ -124,15 +142,22 @@ const styles = `
   .artisan { background:linear-gradient(135deg, rgba(227,205,172,.12), rgba(18,27,21,.65), rgba(8,12,9,.96)); box-shadow:0 20px 60px rgba(0,0,0,.28); }
   .check-row { display:flex; gap:12px; align-items:flex-start; }
   .check-dot { margin-top:4px; width:24px; height:24px; border-radius:999px; display:flex; align-items:center; justify-content:center; background:#e3cdac; color:#24170e; flex:0 0 auto; }
+  .gallery-grid { display:grid; grid-template-columns: 1.2fr .8fr .8fr; gap:18px; margin-top:24px; }
+  .gallery-card { position:relative; min-height:230px; border-radius:28px; overflow:hidden; border:1px solid rgba(255,255,255,.10); }
+  .gallery-card img { width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery-card.tall { min-height:478px; }
+  .gallery-note { position:absolute; left:18px; right:18px; bottom:18px; border-radius:18px; padding:14px 16px; background:linear-gradient(180deg, rgba(0,0,0,.24), rgba(0,0,0,.52)); border:1px solid rgba(255,255,255,.08); backdrop-filter: blur(14px); }
+  .gallery-note-title { font-family: Georgia, "Times New Roman", serif; font-size:1.35rem; color:#f4e7d2; }
+  .gallery-note-copy { margin-top:6px; font-size:.9rem; line-height:1.65; color:rgba(255,255,255,.72); }
   .cta { padding-top:16px; padding-bottom:80px; }
   .cta-card { border-radius:40px; border:1px solid rgba(227,205,172,.18); background:linear-gradient(145deg, rgba(227,205,172,.14), rgba(19,31,23,.72), rgba(7,10,8,1)); box-shadow:0 24px 80px rgba(0,0,0,.35); overflow:hidden; }
-  .cta-inner { position:relative; padding:32px 40px; }
+  .cta-inner { position:relative; padding:40px 46px; }
   .cta-inner::after { content:""; position:absolute; right:0; top:0; width:208px; height:208px; border-radius:999px; background:rgba(227,205,172,.10); filter:blur(48px); }
   .cta-grid { position:relative; display:grid; grid-template-columns: 1fr auto; gap:24px; align-items:center; }
-  .cta-title { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.2rem, 4vw, 3.3rem); color:#f5eada; margin-top:12px; max-width:800px; }
-  .cta-text { margin-top:16px; max-width:800px; color:rgba(255,255,255,.74); line-height:1.9; }
+  .cta-title { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.3rem, 4vw, 3.5rem); color:#f5eada; margin-top:12px; max-width:800px; letter-spacing:-.02em; }
+  .cta-text { margin-top:16px; max-width:800px; color:rgba(255,255,255,.74); line-height:1.95; }
   @media (max-width: 1100px) {
-    .hero-grid, .grid-4, .grid-split, .social-grid, .cta-grid { grid-template-columns: 1fr; }
+    .hero-grid, .grid-4, .grid-split, .social-grid, .cta-grid, .luxury-strip, .gallery-grid { grid-template-columns: 1fr; }
     .section-head, .ar-bottom-row { display:grid; gap:16px; }
   }
   @media (max-width: 720px) {
@@ -142,6 +167,7 @@ const styles = `
     .hero-card-pad, .cta-inner, .pad-24, .quote-card { padding:18px; }
     .editorial-copy, .social-copy { left:18px; right:18px; bottom:18px; padding:18px; }
     .grid-2 { grid-template-columns: 1fr; }
+    section.block { padding:80px 0; }
   }
 `;
 
@@ -344,7 +370,7 @@ function ARMirror({ activeTone, selectedSymbols, cameraOn, onToggleCamera }) {
           <OrbitalBracelet tone={activeTone} symbols={selectedSymbols} />
         </div>
       </div>
-      <div className="ar-label">AR Mirror • Wrist Tracking Illusion</div>
+      <div className="ar-label">AR Mirror · Wrist Tracking Illusion</div>
       <div className="ar-bottom">
         <div className="ar-bottom-row">
           <div>
@@ -404,7 +430,7 @@ export default function EmysARJewelryExperience() {
               <img src={logoSeal} alt="Emy's Bracelets logo" />
               <div>
                 <div className="brand-title">Emy’s Gemstone Bracelets</div>
-                <div className="brand-sub">Luxury craft • Mother Nature</div>
+                <div className="brand-sub">Luxury craft · Mother Nature</div>
               </div>
             </div>
             <ButtonBase href={whatsappHref} blank className="btn-primary">
@@ -425,6 +451,28 @@ export default function EmysARJewelryExperience() {
                     <Play size={16} /> Begin Your Experience
                   </ButtonBase>
                   <div className="pill"><Heart size={16} color="#f0debf" /> Handmade with Love</div>
+                </div>
+                <div className="luxury-strip">
+                  <div className="luxury-stat">
+                    <div className="luxury-stat-kicker">Artisanal</div>
+                    <div className="luxury-stat-title">Crafted one at a time</div>
+                    <div className="luxury-stat-copy">Each bracelet is designed to feel intimate, considered, and unmistakably personal.</div>
+                  </div>
+                  <div className="luxury-stat">
+                    <div className="luxury-stat-kicker">Emotional Luxury</div>
+                    <div className="luxury-stat-title">Story before ornament</div>
+                    <div className="luxury-stat-copy">The page now sells identity, mood, and symbolism before product details.</div>
+                  </div>
+                  <div className="luxury-stat">
+                    <div className="luxury-stat-kicker">Visual Direction</div>
+                    <div className="luxury-stat-title">Editorial polish</div>
+                    <div className="luxury-stat-copy">More contrast, more depth, and more breathing room for a richer first impression.</div>
+                  </div>
+                  <div className="luxury-stat">
+                    <div className="luxury-stat-kicker">Conversion</div>
+                    <div className="luxury-stat-title">Private-order feel</div>
+                    <div className="luxury-stat-copy">The flow now feels closer to a bespoke consultation than a standard online store.</div>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -510,7 +558,7 @@ export default function EmysARJewelryExperience() {
                   </div>
                   <ButtonBase onClick={() => setRitualStep(1)} className="btn-ghost">Edit</ButtonBase>
                 </div>
-                <div className="small" style={{ marginTop: 10 }}>{selectedStone.stone} • {selectedStone.vibe}</div>
+                <div className="small" style={{ marginTop: 10 }}>{selectedStone.stone} · {selectedStone.vibe}</div>
               </div>
             </Card>
 
@@ -610,6 +658,53 @@ export default function EmysARJewelryExperience() {
         </div>
       </section>
 
+      <section className="block container" style={{ paddingTop: 0 }}>
+        <div className="section-head" style={{ marginBottom: 24 }}>
+          <div>
+            <div className="eyebrow" style={{ color: "rgba(167,243,208,.55)" }}>Curated moments</div>
+            <div className="section-title">A richer gallery for a more premium first impression.</div>
+            <div className="section-copy">Clients judge quality in seconds. So the visual rhythm now feels more editorial — stronger image hierarchy, cleaner storytelling, and a sharper sense of luxury value.</div>
+          </div>
+        </div>
+        <div className="gallery-grid">
+          <div className="gallery-card tall">
+            <img src={galleryRack} alt="Curated bracelet collection display" />
+            <div className="gallery-note">
+              <div className="gallery-note-title">The world of the brand</div>
+              <div className="gallery-note-copy">A fuller sense of abundance, variety, and craftsmanship makes the brand feel established and worthy of trust.</div>
+            </div>
+          </div>
+          <div className="gallery-card">
+            <img src={galleryCoral} alt="Natural coral bracelet close-up" />
+            <div className="gallery-note">
+              <div className="gallery-note-title">Heritage luxury</div>
+              <div className="gallery-note-copy">Warmer tones bring culture, femininity, and legacy into the visual story.</div>
+            </div>
+          </div>
+          <div className="gallery-card">
+            <img src={galleryWarrior} alt="Tiger's Eye warrior bracelet close-up" />
+            <div className="gallery-note">
+              <div className="gallery-note-title">Statement detail</div>
+              <div className="gallery-note-copy">Close-up metalwork and bead texture increase perceived value instantly.</div>
+            </div>
+          </div>
+          <div className="gallery-card">
+            <img src={socialHands} alt="Emy's brochure held with bracelet pieces" />
+            <div className="gallery-note">
+              <div className="gallery-note-title">Human proof</div>
+              <div className="gallery-note-copy">Real hands and real pieces create emotional trust faster than generic testimonials.</div>
+            </div>
+          </div>
+          <div className="gallery-card">
+            <img src={heroRack} alt="Bracelet rack arrangement" />
+            <div className="gallery-note">
+              <div className="gallery-note-title">Color abundance</div>
+              <div className="gallery-note-copy">A richer palette helps the collection feel alive, expansive, and visually irresistible.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="cta container">
         <div className="cta-card">
           <div className="cta-inner">
@@ -630,7 +725,7 @@ export default function EmysARJewelryExperience() {
                 </div>
               </div>
               <ButtonBase href={whatsappHref} blank className="btn-primary" style={{ height: 56 }}>
-                <Sparkles size={18} /> Send Your Design to Emy <ArrowRight size={18} />
+                <WandSparkles size={18} /> Send Your Design to Emy <ArrowRight size={18} />
               </ButtonBase>
             </div>
           </div>
