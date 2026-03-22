@@ -13,7 +13,7 @@ import {
   Sparkles,
   Stars,
   Trees,
-  Sparkles,
+  
 } from "lucide-react";
 
 const heroRack = "/hero-rack.jpg";
