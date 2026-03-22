@@ -344,7 +344,7 @@ function ARMirror({ activeTone, selectedSymbols, cameraOn, onToggleCamera }) {
           <OrbitalBracelet tone={activeTone} symbols={selectedSymbols} />
         </div>
       </div>
-      <div className="ar-label">AR Mirror · Wrist Tracking Illusion</div>
+      <div className="ar-label">AR Mirror • Wrist Tracking Illusion</div>
       <div className="ar-bottom">
         <div className="ar-bottom-row">
           <div>
@@ -404,7 +404,7 @@ export default function EmysARJewelryExperience() {
               <img src={logoSeal} alt="Emy's Bracelets logo" />
               <div>
                 <div className="brand-title">Emy’s Gemstone Bracelets</div>
-                <div className="brand-sub">Luxury craft · Mother Nature</div>
+                <div className="brand-sub">Luxury craft • Mother Nature</div>
               </div>
             </div>
             <ButtonBase href={whatsappHref} blank className="btn-primary">
@@ -510,7 +510,7 @@ export default function EmysARJewelryExperience() {
                   </div>
                   <ButtonBase onClick={() => setRitualStep(1)} className="btn-ghost">Edit</ButtonBase>
                 </div>
-                <div className="small" style={{ marginTop: 10 }}>{selectedStone.stone} · {selectedStone.vibe}</div>
+                <div className="small" style={{ marginTop: 10 }}>{selectedStone.stone} • {selectedStone.vibe}</div>
               </div>
             </Card>
 
@@ -630,7 +630,7 @@ export default function EmysARJewelryExperience() {
                 </div>
               </div>
               <ButtonBase href={whatsappHref} blank className="btn-primary" style={{ height: 56 }}>
-                <WandSparkles size={18} /> Send Your Design to Emy <ArrowRight size={18} />
+                <Sparkles size={18} /> Send Your Design to Emy <ArrowRight size={18} />
               </ButtonBase>
             </div>
           </div>
